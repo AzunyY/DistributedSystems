@@ -1,0 +1,58 @@
+Grupo que desenvolveu o projeto:
+  - Grupo SO-032
+
+  - 53563 Ana Luís
+  - 56299 Gabriel Gomes Gameiro
+  - 56321 Rodrigo da Silva Antunes
+
+Limitações:
+  - Leaks do projeto 3 foram resolvidos apenas falta o delete da tree por resolver
+
+Diretorios:
+  - include: para armazenar os ficheiros .h;
+  - source: para armazenar os ficheiros .c;
+  - object: para armazenar os ficheiros objeto;
+  - binary: para armazenar os ficheiros executáveis.
+
+
+Escolhas de Implementação:
+  ------ fase 1 -------
+  - No tree.c na forma como se vai buscar os values e as keys, para não se estar
+  a repetir código, decidiu-se passar um argumento extra "int data" que serve
+  como um boolean para se saber que tipo de dados se quer ir buscar.
+
+  - Foram adicionadas mensagens de erros em alguns casos como no caso do
+  entry_compare no caso de se comparar strings que sao null.
+
+  - Foi-se adicionado uma estrutura da arvore a tree-private de forma a ter-se
+  a "data" do no em especifico e os seus filhos, left e right.
+
+  ------ fase 2 -------
+  - Foi-se adicionado prints para mensagens de erros e de mensagens normais para
+  uma melhor visualizacao do que esta a acontecer enquanto o programa corre.
+
+  ------ fase 3 -------
+  - No verify como nao foi dito no enunciado assumi como por executar devolver
+  0 que ja foi executado devolver 1 e se ainda nao tiver sido atribuido devolver -1
+  isto vai servir para depois no cliente podermos informar o estado da operaçao.
+
+  - No network server para lidar com o caso de chegar ao limite de clientes abertos
+  primeiro percorro o array "dest_set" para verificar se nao ha nenhuma posicao
+  vazia ou seja se um cliente ja fechou anteriormente e se todas tiverem com
+  clientes ligados ai vou fazer um realloc do array para se aumentar a sua
+  capacidade.
+
+  - No ficheiro "tree-skel-private.h" estão a estrutura op_proc e request_t.
+
+  - O TIMEOUT utilizado na poll está definido no ficheiro "network_server-private.h"
+
+  ------ fase 4 -------
+    - A ligacao ao zookeeper e feita apos se ligar ao listening_socket.
+
+    - A replicacao das mensagens tem em conta caso haja servidores a falhar e
+    verifica se o pedido chegou ao proximo servidor, ou seja, cada servidor
+    vai verificar se o servidor seguinte recebeu o pedido.
+
+    - A conexão do cliente ao zookeeper e feita no tree_client
+
+    - Para ligar o servidor usa-se ip port do servidor e do zookeeper
